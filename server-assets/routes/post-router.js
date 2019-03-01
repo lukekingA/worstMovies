@@ -7,7 +7,7 @@ router.get('', (req, res, next) => {
             res.status(200).send(posts)
         })
         .catch(err => {
-            res.status(500).send('Error: ', err)
+            res.status(500).send(err)
         })
 })
 router.get('/:id', (req, res, next) => {
@@ -19,7 +19,7 @@ router.get('/:id', (req, res, next) => {
             res.status(400).send('No Post Listed At That ID')
         })
         .catch(err => {
-            res.status(500).send('Error: ', err)
+            res.status(500).send(err)
         })
 })
 
@@ -29,7 +29,7 @@ router.post('', (req, res, next) => {
             res.status(201).send(post)
         })
         .catch(err => {
-            res.status(500).send('Error: ', err)
+            res.status(500).send(err)
         })
 })
 
@@ -39,7 +39,7 @@ router.put('/:id', (req, res, next) => {
             res.status(200).send(post)
         })
         .catch(err => {
-            res.status(500).send('Error: ', err)
+            res.status(500).send(err)
         })
 })
 
@@ -50,7 +50,7 @@ router.delete('/:id', (req, res, next) => {
             res.status(200).send('Successfully Deleted')
         })
         .catch(err => {
-            res.status(500).send('Error: ', err)
+            res.status(500).send(err)
         })
 })
 

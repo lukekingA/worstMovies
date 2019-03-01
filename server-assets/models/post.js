@@ -7,11 +7,12 @@ let post = new Schema({
     imgUrl: { type: String, required: true },
     upvote: { type: Number, required: true, default: 0 },
     downvote: { type: Number, required: true, default: 0 },
-    date: { type: Number, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     userId: { type: ObjectId, ref: 'User', required: true }
-})
+}, {
+        timestamps: true
+    })
 
 //987r9touyf8645yuy0puh
 
