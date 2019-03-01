@@ -8,9 +8,8 @@ let Comments = require('./comment')
 let user = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
-    // posts: { type: ObjectId, ref: "Post", required: true, default: 0 },
-    // comments: { type: ObjectId, ref: "Comment", required: true, default: 0 }
-
+    // posts: { type: ObjectId, ref: "Post", required: false, default: 0 },
+    // comments: { type: ObjectId, ref: "Comment", required: false, default: 0 }
 })
 
 user.pre('remove', function (next) {

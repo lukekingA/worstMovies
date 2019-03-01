@@ -17,9 +17,9 @@ let userRoutes = require('./server-assets/routes/user-router')
 let postRoutes = require('./server-assets/routes/post-router')
 let commentRoutes = require('./server-assets/routes/comment-router')
 
-server.use('api/users', userRoutes)
-server.use('api/posts', postRoutes)
-server.use('api/comments', commentRoutes)
+server.use('/api/users', userRoutes)
+server.use('/api/posts', postRoutes)
+server.use('/api/comments', commentRoutes)
 
 
 

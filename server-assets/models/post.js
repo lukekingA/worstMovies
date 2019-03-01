@@ -7,12 +7,13 @@ let post = new Schema({
     imgUrl: { type: String, required: true },
     upvote: { type: Number, required: true, default: 0 },
     downvote: { type: Number, required: true, default: 0 },
-    date: { type: Date, required: true },
+    date: { type: Number, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
-    comment: { type: ObjectId, ref: 'Comment', required: true, default: 'Be The First To Comment!' },
-    username: { type: ObjectId, ref: 'User', required: true },
+    userId: { type: ObjectId, ref: 'User', required: true }
 })
+
+//987r9touyf8645yuy0puh
 
 
 post.pre('remove', next => {
