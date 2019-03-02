@@ -67,11 +67,12 @@ function drawMainPost() {
 }
 
 function drawPosts() {
-  let template = '<div class="col col-sm-4">'
+  let template = ''
   _ps.Posts.forEach(p => {
+    template += '<div class="col col-sm-4">'
     template += p.PostMiniTemplate
+    template += '</div>'
   })
-  template += '</div>'
   document.querySelector('#posts').innerHTML = template
 }
 
