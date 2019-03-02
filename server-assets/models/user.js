@@ -11,7 +11,7 @@ let user = new Schema({
 })
 
 user.pre('remove', function (next) {
-    Promise.all([Posts.remove({ user: this._id }), Comments.remove({ user: this._id })])
+    Promise.all([Comments.remove({ userId: this._id }), Posts.remove({ userId: this._id })])
         .then(() => {
             console.log('deleting posts')
             next()

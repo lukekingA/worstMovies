@@ -7,7 +7,7 @@ let subcomment = new Schema({
     downvote: { type: Number, required: true, default: 0 },
     content: { type: String, required: true },
     postId: { type: ObjectId, ref: "Post", required: true },
-    user: { type: ObjectId, ref: "User", required: true },
+    userId: { type: ObjectId, ref: "User", required: true },
 }, {
         timestamps: true
     })
@@ -17,7 +17,7 @@ let comment = new Schema({
     downvote: { type: Number, required: true, default: 0 },
     content: { type: String, required: true },
     postId: { type: ObjectId, ref: "Post", required: true },
-    user: { type: ObjectId, ref: "User", required: true },
+    userId: { type: ObjectId, ref: "User", required: true },
     subcomments: [subcomment]
 }, {
         timestamps: true

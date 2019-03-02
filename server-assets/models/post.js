@@ -17,13 +17,13 @@ let post = new Schema({
 //987r9touyf8645yuy0puh
 
 
-post.pre('remove', next => {
-    Comment.find({ post: this._id })
+post.pre('remove', function () {
+    Comment.find({ postId: this._id })
         .then((comments) => {
             console.log('deleting comments')
-            comments.forEach(c => c.remove())
-            next()
+            return Promise.all(comments.map(c => c.remove()))
         })
+        .then(() => next())
         .catch(err => next(err))
 })
 

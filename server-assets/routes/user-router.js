@@ -44,12 +44,12 @@ router.put('/:id', (req, res, next) => {
         })
 })
 
-
 router.delete('/:id', (req, res, next) => {
-    User.findOneAndDelete({ _id: req.params.id })
-        .then(() => {
-            res.status(200).send('Successfully Deleted')
+    User.findById(req.params.id)
+        .then(user => {
+            return user.remove()
         })
+        .then(() => res.status(200).send('Successfully Deleted'))
         .catch(err => {
             res.status(500).send(err)
         })
