@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./assetts/bootSuperHero.css">
+  <link rel="stylesheet" href="./assetts/style.css">
+  <title>Document</title>
+</head>
+
+<body class="container-fluid">
+
+  <header class="row">
+    <div class="col mt-3">
+      <nav class="navbar navbar-light">
+        <div>
+          <h2 class="navbar-brand" href="#">Rottin Tomatos</h2>
+        </div>
+        <form id="login" )">
+          <div class="form-group d-flex">
+            <input class="form-control mr-sm-2" name="username" type="username" placeholder="username" aria-label="username">
+            <input class="form-control mr-sm-2" name="password" type="password" placeholder="password" aria-label="password">
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-sm btn-outline-success mr-2" type="submit" name="logIn">Log In</button>
+            <button class="btn btn-sm btn-outline-success mr-2" type="button" name="createUser">Create User</button>
+          </div>
+        </form>
+      </nav>
+    </div>
+    <form onsubmit="app.controllers.postController.addPost(event)" hidden>
+      <input type="text" name="title" placeholder="Movie title here" required>
+      <input type="text" name="description" placeholder="Add a short comment">
+      <input type="url" name="url" required>
+    </form>
+  </header>
+  <main id="posts" class="row">
+    <!-- posts here -->
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script type="module" src="./app/main.js"></script>
+</body>
+
+</html>

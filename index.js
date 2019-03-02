@@ -11,7 +11,7 @@ server.use(bp.urlencoded({
 }))
 
 //links www 
-server.use(express.static(__dirname + "/cool-movies"))
+server.use(express.static(__dirname + "/www"))
 
 //routes
 let userRoutes = require('./server-assets/routes/user-router')

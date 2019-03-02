@@ -1,0 +1,8 @@
+.overflowHidden {
+  overflow-y: auto;
+  max-height: 10rems;
+}
+
+li {
+  list-style: none;
+}
