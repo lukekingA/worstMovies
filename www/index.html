@@ -5,9 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Eater|Nosifer|Yeon+Sung" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="./assetts/bootSuperHero.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+
+  <!-- <link rel="stylesheet" href="./assetts/bootSuperHero.css"> -->
   <link rel="stylesheet" href="./assetts/style.css">
   <title>Document</title>
 </head>
@@ -18,26 +22,58 @@
     <div class="col mt-3">
       <nav class="navbar navbar-light">
         <div>
-          <h2 class="navbar-brand" href="#">Rottin Tomatos</h2>
+          <h1 class="offset-1 navbar-brand fc mb-4" id="tomato" href="#">Rottin' Tomátös</h1>
         </div>
-        <form id="login" )">
+        <form id="login" onsubmit="app.controllers.postController.userLogin(event)">
           <div class="form-group d-flex">
-            <input class="form-control mr-sm-2" name="username" type="username" placeholder="username" aria-label="username">
-            <input class="form-control mr-sm-2" name="password" type="password" placeholder="password" aria-label="password">
+            <input id="username" class="form-control mr-sm-2" name="username" type="username" placeholder="username"
+              aria-label="username">
+            <input id="password" class="form-control mr-sm-2" name="password" type="password" placeholder="password"
+              aria-label="password">
           </div>
           <div class="d-flex justify-content-end">
             <button class="btn btn-sm btn-outline-success mr-2" type="submit" name="logIn">Log In</button>
-            <button class="btn btn-sm btn-outline-success mr-2" type="button" name="createUser">Create User</button>
+            <button class="btn btn-sm btn-outline-success mr-2" onclick="app.controllers.postController.createUser()"
+              type="button" name="createUser">Create User</button>
           </div>
         </form>
+
+        <form id="logout" onsubmit="app.controllers.userController.userLogout()" hidden>
+          <div class="form-group d-flex">
+            <div>
+              <div>You are Logged In as: <span></span></div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-sm btn-outline-success mr-2" type="submit" name="logout">Log Out</button>
+          </div>
+        </form>
+
+
       </nav>
     </div>
-    <form onsubmit="app.controllers.postController.addPost(event)" hidden>
-      <input type="text" name="title" placeholder="Movie title here" required>
-      <input type="text" name="description" placeholder="Add a short comment">
-      <input type="url" name="url" required>
-    </form>
   </header>
+  <section class="row">
+    <div class="col">
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-success mb-3 ml-2 m-1" id="addPostBtn" onclick="app.controllers.postController.addPostForm()"
+          disabled>Add
+          Post</button>
+        <button class="btn btn-outline-success mb-3 mr-4 m-1" onclick="app.controllers.postController.sortPost()">Sort</button>
+      </div>
+    </div>
+  </section>
+  <section class="row">
+    <div class="col ml-2">
+      <form id="postForm" onsubmit="app.controllers.postController.addPost(event)" hidden>
+        <input type="text" name="title" placeholder="Movie title here" required>
+        <input type="text" name="description" placeholder="Add a short comment">
+        <input type="url" name="url" required>
+        <button class="btn btn-sm btn-outline-success m-1" type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
   <main id="posts" class="row">
     <!-- posts here -->
   </main>

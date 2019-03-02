@@ -6,12 +6,23 @@ let Comments = require('./comment')
 
 
 let user = new Schema({
-    username: { type: String, required: true },
-    password: { type: String, required: true },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
 })
 
 user.pre('remove', function (next) {
-    Promise.all([Comments.remove({ userId: this._id }), Posts.remove({ userId: this._id })])
+    Promise.all([Comments.remove({
+            userId: this._id
+        }), Posts.remove({
+            userId: this._id
+        })])
         .then(() => {
             console.log('deleting posts')
             next()

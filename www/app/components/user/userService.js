@@ -1,12 +1,14 @@
-//imports
+//IMPORTS
 import User from '../../models/user.js'
 
-//private
+//PRIVATE
 // @ts-ignore
-let _apiComments = axios.create({
-  baseURL: ''
+let _apiUsers = axios.create({
+  baseURL: '/api/users'
 })
 
+//utilize localStorage to access the userId across multiple files
+//userId: window.localStorage.setItem('userId', user)
 let _state = {
 
 }
@@ -22,7 +24,7 @@ function setState(prop, val) {
 
 
 
-//public
+//PUBLIC
 export default class UserService {
   constructor() {
     console.log('userSevice Built')

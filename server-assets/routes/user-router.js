@@ -11,6 +11,8 @@ router.get('', (req, res, next) => {
         })
 })
 
+
+
 router.get('/:id', (req, res, next) => {
     User.findById(req.params.id).populate('user')
         .then(user => {
@@ -34,8 +36,31 @@ router.post('', (req, res, next) => {
         })
 })
 
+//this route for logging in (this is a POST route but we are not writing to the db but querying for a user)
+router.post('/login', (req, res, next) => {
+    User.findOne({
+            username: req.body.username,
+            password: req.body.password
+        })
+        .then(user => {
+            if (!user) {
+                return res.status(401).send({
+                    message: 'invalid crediantials'
+                })
+            }
+            res.send(user)
+        })
+        .catch(err => {
+            res.status(400).send(err)
+        })
+})
+
 router.put('/:id', (req, res, next) => {
-    User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    User.findOneAndUpdate({
+            _id: req.params.id
+        }, req.body, {
+            new: true
+        })
         .then(user => {
             res.status(200).send(user)
         })

@@ -5,7 +5,7 @@ import PostController from "./components/post/postController.js";
 
 class App {
   constructor() {
-    let controllers = {
+    this.controllers = {
       userController: new UserController(),
       commentController: new CommentController(),
       postController: new PostController()

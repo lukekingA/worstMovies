@@ -35,7 +35,11 @@ router.post('', (req, res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
-    Comment.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    Comment.findOneAndUpdate({
+            _id: req.params.id
+        }, req.body, {
+            new: true
+        })
         .then(comment => {
             res.status(200).send(comment)
         })
@@ -44,9 +48,25 @@ router.put('/:id', (req, res, next) => {
         })
 })
 
+router.put('/:id/subcomments', (req, res, next) => {
+    Comment.findById(req.params.id)
+        .then(comment => {
+            comment.subcomments.push(req.body)
+            comment.save(err => {
+                if (err) {
+                    res.status(400).send('failure')
+                }
+                res.status(200).send('success')
+            })
+        })
+        .catch(next)
+})
+
 
 router.delete('/:id', (req, res, next) => {
-    Comment.findOneAndDelete({ _id: req.params.id })
+    Comment.findOneAndDelete({
+            _id: req.params.id
+        })
         .then(() => {
             res.status(200).send('Successfully Deleted')
         })

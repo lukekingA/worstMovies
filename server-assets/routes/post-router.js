@@ -4,7 +4,10 @@ let Post = require('../models/post')
 
 
 router.get('', (req, res, next) => {
-    Post.find({}).populate({ path: 'userId', select: 'username' })
+    Post.find({}).populate({
+            path: 'userId',
+            select: 'username'
+        })
         .then(posts => {
             res.status(200).send(posts)
         })
@@ -12,8 +15,13 @@ router.get('', (req, res, next) => {
             res.status(500).send(err)
         })
 })
+
+
 router.get('/:id', (req, res, next) => {
-    Post.findById(req.params.id).populate({ path: 'userId', select: 'username' })
+    Post.findById(req.params.id).populate({
+            path: 'userId',
+            select: 'username'
+        })
         .then(post => {
             if (post) {
                 return res.status(200).send(post)
@@ -27,7 +35,12 @@ router.get('/:id', (req, res, next) => {
 
 
 router.get('/:id/comments', (req, res, next) => {
-    Comment.find({ postId: req.params.id }).populate({ path: 'userId', select: 'username' })
+    Comment.find({
+            postId: req.params.id
+        }).populate({
+            path: 'userId',
+            select: 'username'
+        })
         .then(comments => {
             if (comments) {
                 return res.status(200).send(comments)
@@ -51,7 +64,11 @@ router.post('', (req, res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
-    Post.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    Post.findOneAndUpdate({
+            _id: req.params.id
+        }, req.body, {
+            new: true
+        })
         .then(post => {
             res.status(200).send(post)
         })
@@ -59,7 +76,6 @@ router.put('/:id', (req, res, next) => {
             res.status(500).send(err)
         })
 })
-
 
 router.delete('/:id', (req, res, next) => {
     Post.findById(req.params.id)
