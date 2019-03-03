@@ -131,10 +131,12 @@ export default class PostController {
   }
 
   addComment(e) {
+    debugger
+    window.scrollTo(0, document.querySelector('body').scrollHeight)
     e.preventDefault()
     let form = e.target
     let data = {
-      comment: form.comment
+      content: form.comment
     }
     _ps.addComment(data)
   }

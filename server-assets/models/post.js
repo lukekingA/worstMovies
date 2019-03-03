@@ -35,7 +35,7 @@ let post = new Schema({
     timestamps: true
 })
 
-//987r9touyf8645yuy0puh
+
 
 
 post.pre('remove', function () {
