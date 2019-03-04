@@ -164,7 +164,9 @@ export default class PostService {
   }
 
   sortPost() {
-    _state.sort = !_state.sort
+    debugger
+    let val = !_state.sort
+    setState('sort', val)
   }
 
   deletePost() {
@@ -175,25 +177,5 @@ export default class PostService {
         })
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

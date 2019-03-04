@@ -9,13 +9,13 @@ let _ps = new PostService()
 function drawComments() {
   let comments = _ps.Comments
   let template = ''
-  if (_ps.Sort) {
-    comments.sort((a, b) => a.createdAt - b.createdAt)
-  } else {
-    comments.sort((a, b) => {
-      return (a.upvote + a.downvote) - (b.upvote + b.downvote)
-    })
-  }
+  // if (_ps.Sort) {
+  //   comments.sort((a, b) => a.createdAt - b.createdAt)
+  // } else {
+  //   comments.sort((a, b) => {
+  //     return (a.upvote + a.downvote) - (b.upvote + b.downvote)
+  //   })
+  // }
   comments.forEach(c => {
     template += `
     <li>
@@ -69,6 +69,19 @@ function drawMainPost() {
 
 function drawPosts() {
   let template = ''
+  debugger
+  if (_ps.Sort) {
+    _ps.Posts.sort((a, b) => {
+      return (b.upvote + a.downvote) - (a.upvote + a.downvote)
+    })
+    console.log(_ps.Posts, _ps.Sort)
+  } else {
+    _ps.Posts.sort((a, b) => {
+      console.log(Date.parse(b.createdAt))
+      return Date.parse(a.createdAt) - Date.parse(b.createdAt)
+    })
+    console.log(_ps.Posts, _ps.Sort)
+  }
   _ps.Posts.forEach(p => {
     template += '<div class="col col-sm-4">'
     template += p.PostMiniTemplate
