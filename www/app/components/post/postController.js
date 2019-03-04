@@ -55,6 +55,7 @@ function drawComments() {
     `
   })
   document.querySelector('#comments').innerHTML = template
+
 }
 
 function drawMainPost() {
@@ -130,9 +131,10 @@ export default class PostController {
     form.reset()
   }
 
+
   addComment(e, postId, userId) {
-    debugger
     e.preventDefault()
+    debugger
 
     let form = e.target
     let data = {
