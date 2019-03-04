@@ -60,7 +60,7 @@ function drawComments() {
 function drawMainPost() {
   let post = _ps.Post
   let template = '<div class="col col-sm-8 offset-sm-2">'
-  template += post.PostMainTemplate
+  template += post.PostMainTemplate(_ps.Post._id, _ps.User._id)
   template += '</div>'
   document.querySelector('#posts').innerHTML = template
   drawComments()
@@ -130,13 +130,15 @@ export default class PostController {
     form.reset()
   }
 
-  addComment(e) {
+  addComment(e, postId, userId) {
     debugger
-    window.scrollTo(0, document.querySelector('body').scrollHeight)
     e.preventDefault()
+
     let form = e.target
     let data = {
-      content: form.comment
+      content: form.comment,
+      postId: postId,
+      userId: userId
     }
     _ps.addComment(data)
   }
@@ -152,11 +154,14 @@ export default class PostController {
 
   showCommentForm(id) {
     document.querySelector('#commentForm').removeAttribute('hidden')
+    window.scrollTo(0, document.querySelector('body').scrollHeight)
   }
 
   cancelPostEntry(e) {
+    let form = e.target.parentElement.parentElement
     e.preventDefault()
     document.querySelector('#commentForm').setAttribute('hidden', "")
+    form.reset()
   }
 
   dismissPost() {
