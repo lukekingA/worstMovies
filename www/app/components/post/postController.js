@@ -69,7 +69,6 @@ function drawMainPost() {
 
 function drawPosts() {
   let template = ''
-  debugger
   if (_ps.Sort) {
     _ps.Posts.sort((a, b) => {
       return (b.upvote + b.downvote) - (a.upvote + a.downvote)
@@ -93,6 +92,8 @@ function drawPosts() {
 function drawUser() {
   document.querySelector('#login').setAttribute("hidden", '')
   document.querySelector('#logout').removeAttribute('hidden')
+
+  document.querySelector('#loginMessage').innerHTML = `You are logged in as: ${_ps.User.username}`
   document.querySelector('#addPostBtn').removeAttribute('disabled')
 
 }
