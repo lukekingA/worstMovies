@@ -72,7 +72,7 @@ function drawPosts() {
   debugger
   if (_ps.Sort) {
     _ps.Posts.sort((a, b) => {
-      return (b.upvote + a.downvote) - (a.upvote + a.downvote)
+      return (b.upvote + b.downvote) - (a.upvote + a.downvote)
     })
     console.log(_ps.Posts, _ps.Sort)
   } else {

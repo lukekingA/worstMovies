@@ -102,7 +102,6 @@ export default class PostService {
 
   addComment(data) {
     _apiComments.post('/', data).then(res => {
-      debugger
       this.getOneApiPost(data.postId)
     })
   }
@@ -145,7 +144,6 @@ export default class PostService {
 
 
   createUser(data) {
-    debugger
     _apiUsers.post('', data)
       .then(res => {
 
@@ -164,7 +162,6 @@ export default class PostService {
   }
 
   sortPost() {
-    debugger
     let val = !_state.sort
     setState('sort', val)
   }
