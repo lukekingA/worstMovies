@@ -101,9 +101,9 @@ export default class PostService {
 
 
   addComment(data) {
-
-    _apiComments.post('', data).then(res => {
-      this.getOneApiPost(res.data._id)
+    _apiComments.post('/', data).then(res => {
+      debugger
+      this.getOneApiPost(data.postId)
     })
   }
   addPostUpVote(postId) {

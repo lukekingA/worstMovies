@@ -134,11 +134,9 @@ export default class PostController {
 
   addComment(e, postId, userId) {
     e.preventDefault()
-    debugger
-
     let form = e.target
     let data = {
-      content: form.comment,
+      content: form.comment.value,
       postId: postId,
       userId: userId
     }
